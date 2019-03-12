@@ -89,7 +89,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1480108962574007821}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6aebf1c9c8b838045bbb83736b89e926, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -221,8 +221,8 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: 20
-    m_UpperAngle: -20
+    m_LowerAngle: -15
+    m_UpperAngle: 15
 --- !u!70 &1464266160222632221
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -328,7 +328,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 6288723740460390629}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6aebf1c9c8b838045bbb83736b89e926, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -611,7 +611,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6aebf1c9c8b838045bbb83736b89e926, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -638,8 +638,8 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: 20
-    m_UpperAngle: -20
+    m_LowerAngle: -15
+    m_UpperAngle: 15
 --- !u!114 &8886642847453214506
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,8 +18,9 @@ public class ClickMoveHand : MonoBehaviour
 
     void Start()
     {
+        const float ArmThreshold = 0.95f;
         rb = GetComponent<Rigidbody2D>();
-        armLength = Vector2.Distance(armRoot.position,transform.position);
+        armLength = Vector2.Distance(armRoot.position, transform.position) * ArmThreshold;
     }
 
     void Update()
@@ -36,13 +37,13 @@ public class ClickMoveHand : MonoBehaviour
     private void FixedUpdate()
     {
         //ターゲットとの距離がこれ以下なら止まる がくがくしないように
-        const float targetThreshold = 0.2f;
+        const float TargetThreshold = 0.2f;
 
         if (moving)
         {
             var dir = targetPos - (Vector2)transform.position;
             var toTargetDistance = dir.magnitude;
-            if(toTargetDistance<= targetThreshold)
+            if(toTargetDistance<= TargetThreshold)
             {
                 moving = false;
                 return;

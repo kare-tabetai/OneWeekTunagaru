@@ -22,9 +22,12 @@ public class RotateHand : MonoBehaviour
         if (Input.GetButtonDown(controlInput))
         {
             var dir = transform.parent.position - transform.position;
-            var crossVector = Vector3.Cross(dir, Vector3.forward);
+            Vector3 crossVector;
+            
+            if (inverse) { crossVector = Vector3.Cross(dir, -Vector3.forward); }
+            else { crossVector = Vector3.Cross(dir, Vector3.forward); }
+
             var forceVec = crossVector.normalized * speed;
-            if (inverse) { forceVec *= -1f; }
             rb.AddForce(forceVec, ForceMode2D.Impulse);
         }
     }

@@ -6,10 +6,19 @@ public class Head : MonoBehaviour
 {
     [SerializeField]
     float speed = 1;
-    [SerializeField,Tooltip("ついてきてほしいものでMovePositionで動かしたいもの")]
-    Rigidbody2D[] rbChildren;
-    [SerializeField, Tooltip("ついてきてほしいものでTranslateで動かしたいもの")]
-    Transform[] transformChildren;
+    [SerializeField]
+    Foot[] foots;
+    bool isGrounded
+    {
+        get
+        {
+            foreach(var foot in foots)
+            {
+                if (foot.IsGounded) { return true; }
+            }
+            return false;
+        }
+    }
 
     Rigidbody2D rb;
     void Start()
@@ -17,22 +26,17 @@ public class Head : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        var moveVec = Vector2.right * speed * Time.deltaTime;
-        rb.MovePosition((Vector2)transform.position + moveVec);
-
-        //手など主導でコントロールしているものが置いてかれないように
-        foreach(var childRb in rbChildren)
+        if (Input.GetMouseButtonDown(1)&&isGrounded)
         {
-            Debug.Assert(childRb.isKinematic == true);
-            var childPos = childRb.transform.position;
-            childRb.MovePosition((Vector2)childPos + moveVec);
-        }
-        //手の付け根などMovePositionで動かさないもの
-        foreach (var childTransform in transformChildren)
-        {
-            childTransform.position += (Vector3)moveVec;
+            print("jump");
+            Vector3 screenPos = Input.mousePosition;
+            var mousePosition = (Vector2)Camera.main.ScreenToWorldPoint(screenPos);
+            var toMousePos = mousePosition - (Vector2)transform.position;
+            //var jumpDir = toMousePos.normalized;
+            var jumpDir = new Vector2(1,2).normalized;
+            rb.AddForce(jumpDir * speed, ForceMode2D.Impulse);
         }
     }
 }
